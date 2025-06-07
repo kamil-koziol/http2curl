@@ -11,7 +11,7 @@ import (
 func Convert(body io.Reader, args ...string) (string, error) {
 	req, err := httpparser.Parse(body)
 	if err != nil {
-		return "", fmt.Errorf("Failed to parse .http: %s\n", err)
+		return "", fmt.Errorf("failed to parse .http: %s", err)
 	}
 
 	args = append(args, "-X", req.Method)
