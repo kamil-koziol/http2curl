@@ -21,7 +21,7 @@ func Convert(body io.Reader, args ...string) (string, error) {
 	if req.Body != "" {
 		args = append(args, "-d", fmt.Sprintf("'%s'", req.Body))
 	}
-	args = append(args, req.URL.String())
+	args = append(args, fmt.Sprintf("\"%s\"", req.URL.String()))
 
 	curl := exec.Command("curl", args...)
 	return curl.String(), nil
